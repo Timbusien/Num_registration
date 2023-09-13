@@ -25,6 +25,7 @@ def start_reg(message):
 
 def get_name(message):
     name = message.text
+    bot.send_message(user, f'здравствуйте {name}')
     bot.send_message(user, 'отлично, введите ваш номер для регистрации', reply_markup=buttons.get_number())
     bot.register_next_step_handler(message, get_num, name)
 

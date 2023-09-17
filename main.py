@@ -6,7 +6,6 @@ import database
 bot = telebot.TeleBot('6448222136:AAEKKHzwHield6HK5LlUQ2UXBIKwgkP3tvw')
 
 
-
 @bot.message_handler(commands=['start'])
 def start(message):
     #global user
@@ -14,7 +13,6 @@ def start(message):
     print(message)
     bot.send_message(user, 'Привет, Salom', reply_markup=telebot.types.ReplyKeyboardRemove())
     bot.send_message(user, 'Выбирайте, Tanlang', reply_markup=buttons.languages())
-    bot.register_next_step_handler(message, change_lan)
     if message.text.lower() == 'помощь':
         bot.send_message(user, 'просто нажите на "регистрация", там вы введёте имя и номер телефона')
 
@@ -23,13 +21,14 @@ def start(message):
 def change_lan(call):
     user = call.message.chat.id
     if call.data =='rus':
+        bot.register_next_step_handler(call.message, start_reg)
         bot.send_message(user, 'язык выбран русский')
         bot.send_message(user, 'для следующей операции нажмите на команды', reply_markup=buttons.choice())
-        bot.register_next_step_handler(call.message, start_reg)
+
     elif call.data == 'uzb':
+        bot.register_next_step_handler(call.message, start_reg_uzb)
         bot.send_message(user, "o'zbek tili tanlangan")
         bot.send_message(user, 'keyingi boshqaruv uchun comandalarni ishlating', reply_markup=buttons.choice_uzb())
-        bot.register_next_step_handler(call.message, start_reg_uzb)
 
 
 @bot.message_handler(content_types=['text'])

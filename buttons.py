@@ -11,8 +11,8 @@ def languages():
 def choice():
     buttons = types.ReplyKeyboardMarkup(resize_keyboard=True)
     reg = types.KeyboardButton('Регистрация')
-    #help_bar = types.KeyboardButton('Помощь')
-    buttons.add(reg)
+    help_bar = types.KeyboardButton('Помощь')
+    buttons.add(reg, help_bar)
     return buttons
 
 def get_number():

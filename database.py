@@ -6,6 +6,7 @@ NUM = db.cursor()
 
 NUM.execute('CREATE TABLE IF NOT EXISTS user'
             '(name TEXT, number TEXT);')
+db.commit()
 
 def user_reg(name, number):
     db = sqlite3.connect('data')

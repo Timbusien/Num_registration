@@ -51,12 +51,13 @@ def get_name(message):
 def get_num(message, name):
     user = message.from_user.id
     if message.contact and message.contact.phone_number:
-        #bot.send_message(user, 'готово!')
+        #bot.send_message(user, 'готово!'
         user_num = message.contact.phone_number
         database.user_reg(user, user_num)
         bot.register_next_step_handler(message, chat, name, user_num)
-    elif message.text.lower() == 'далее':
-        bot.send_message(user, 'возвращаю, нажмите поделиться а потом далее!', reply_markup=buttons.choice())
+
+    # elif message.text.lower() == 'далее':
+    #     bot.send_message(user, 'возвращаю, нажмите поделиться а потом далее!', reply_markup=buttons.choice())
 
 
 def chat(message, name, user_num):
